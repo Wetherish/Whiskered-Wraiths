@@ -1,2 +1,5 @@
 Whiskered Wraiths
-meow
+# Co-Founder: 
+* Skittysh
+* Wethersl
+* Ninodeb
