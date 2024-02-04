@@ -4,21 +4,30 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private float movementSpeed = 2f;
+    private Rigidbody2D rb;
+    private Vector2 movementDirection;
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
-    { 
-        float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
-        
-        Vector3 movement = new Vector3(inputX, inputY, 0);
-        movement *= Time.deltaTime * 5;
-        transform.Translate(movement);
-        
+    {
+        movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+    }
+    
+    void FixedUpdate()
+    {
+        if (movementDirection.x != 0 && movementDirection.y != 0)
+        {
+            // Apply diagonal speed multiplier
+            rb.velocity = movementDirection * movementSpeed * 1.3f;
+        }
+        else
+        {
+            rb.velocity = movementDirection * movementSpeed;
+        }
     }
 }
