@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "whiskered-wraiths.sln"
+    "dotnet.defaultSolution": "Whiskered-Wraiths.sln"
 }
