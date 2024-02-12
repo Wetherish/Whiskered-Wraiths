@@ -12,8 +12,15 @@ public class Health : MonoBehaviour
     public Sprite halfHearts;
     public Sprite emptyHearts;
 
+    private maxHealth = 10;
+
     void Update()
     {
+        if (NumberOfHearts > maxHealth)
+        {
+            NumberOfHearts = maxHealth;
+        }
+        
         if(health > 2 * NumberOfHearts)
         {
             health = 2 * NumberOfHearts;
