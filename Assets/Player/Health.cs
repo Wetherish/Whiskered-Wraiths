@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     public Sprite halfHearts;
     public Sprite emptyHearts;
 
-    private maxHealth = 10;
+    private int maxHealth = 10;
 
     void Update()
     {
