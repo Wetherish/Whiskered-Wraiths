@@ -1,5 +1,5 @@
 Whiskered Wraiths
 # Co-Founder: 
 * Skittysh
-* Wethersl
-* Ninodeb
+* Wetherish
+* Ninozaur
