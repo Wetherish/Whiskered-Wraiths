@@ -1695,7 +1695,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1685776712}
+<<<<<<< HEAD
   moveSpeed: 5
+=======
+  moveSpeed: 3
+>>>>>>> eb54090d95a8e808272c74a8e818f1d3882691ea
 --- !u!1 &1348904534
 GameObject:
   m_ObjectHideFlags: 0
