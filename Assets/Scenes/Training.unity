@@ -1695,7 +1695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1685776712}
-  moveSpeed: 3
+  moveSpeed: 5
 --- !u!1 &1348904534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,6 +2157,7 @@ GameObject:
   - component: {fileID: 1685776713}
   - component: {fileID: 1685776714}
   - component: {fileID: 1685776715}
+  - component: {fileID: 1685776709}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -3067,7 +3068,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 916742874}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
