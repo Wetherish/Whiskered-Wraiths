@@ -1,5 +1,5 @@
 Whiskered Wraiths
 # Co-Founder: 
-* Skittysh
-* Wetherish
-* Ninozaur
+* [Skittysh](https://github.com/Skittysh)
+* [Wetherish](https://github.com/Wetherish)
+* [Ninozaur](https://github.com/NinaN64)
