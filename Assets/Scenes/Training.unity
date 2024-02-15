@@ -1690,8 +1690,9 @@ GameObject:
   - component: {fileID: 1258391621}
   - component: {fileID: 1258391622}
   - component: {fileID: 1258391624}
-  - component: {fileID: 1258391625}
   - component: {fileID: 1258391626}
+  - component: {fileID: 1258391627}
+  - component: {fileID: 1258391628}
   m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
@@ -1793,19 +1794,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1258391625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1258391620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db727c855e725654282cdbd05c7e9544, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 5
 --- !u!70 &1258391626
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1841,6 +1829,33 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0000019073486, y: 0.00000011920929}
   m_Size: {x: 1.69, y: 2.53}
   m_Direction: 0
+--- !u!114 &1258391627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258391620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db727c855e725654282cdbd05c7e9544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+--- !u!114 &1258391628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258391620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 303e118d57b427c4b846aa95f558b971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1685776712}
+  moveSpeed: 5
 --- !u!1 &1348904534
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,7 +2337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6d8720587b1187498a57ac7800437da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 6
+  movementSpeed: 10
   dashSpeed: 20
   dashTime: 0.1
   dashCooldown: 1
@@ -2478,17 +2493,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d59d1975b9687e48aac067b32b019f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
-  NumberOfHearts: 2
-  hearts:
-  - {fileID: 875435942}
-  - {fileID: 1016905944}
-  - {fileID: 1927647287}
-  - {fileID: 655681999}
-  - {fileID: 214283947}
-  fullHearts: {fileID: 21300000, guid: 3135c8d2092d23d468e619568351f39f, type: 3}
-  halfHearts: {fileID: 21300000, guid: 36331ed737f97454ea7d6f671cc20523, type: 3}
-  emptyHearts: {fileID: 21300000, guid: 2c3db9a2aac4ea4449511f061214e499, type: 3}
+  health: 0
+  NumberOfHearts: 0
+  hearts: []
+  fullHearts: {fileID: 0}
+  halfHearts: {fileID: 0}
+  emptyHearts: {fileID: 0}
 --- !u!111 &1685776716
 Animation:
   m_ObjectHideFlags: 0

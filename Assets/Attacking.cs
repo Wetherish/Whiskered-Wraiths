@@ -31,7 +31,7 @@ public class Attacking : MonoBehaviour
         foreach (Collider2D collider in hitColliders)
         {
             Debug.Log("uwu");
-            Enemy enemy = collider.GetComponent<Enemy>();
+            EnemyDeath enemy = collider.GetComponent<EnemyDeath>();
             if (enemy != null)
             {
                 enemy.TakeDamage(attackDamage);
