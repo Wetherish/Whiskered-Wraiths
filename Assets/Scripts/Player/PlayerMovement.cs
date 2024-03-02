@@ -66,5 +66,12 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = movementDirection * movementSpeed;
         }
     }
+    public void MovementSpeedBuff(float msBuff){
+        movementSpeed += msBuff;
+    }
+    public float getMS()
+    {
+        return movementSpeed;
+    }
 
 }

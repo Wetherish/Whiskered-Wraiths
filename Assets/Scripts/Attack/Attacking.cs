@@ -19,23 +19,17 @@ public class Attacking : MonoBehaviour
         {
             CheckHit();
         }
-        
-        
     }
 
     void CheckHit()
     {
-        Debug.Log("Attack");
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
-        Debug.Log($"{hitColliders.Length} colliders");
         foreach (Collider2D collider in hitColliders)
         {
-            Debug.Log("uwu");
             EnemyDeath enemy = collider.GetComponent<EnemyDeath>();
             if (enemy != null)
             {
                 enemy.TakeDamage(attackDamage);
-                Debug.Log("DostajeDMG");
             }
 
         }

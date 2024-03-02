@@ -7,13 +7,12 @@ public class Health : MonoBehaviour
 {
     public int health;
     public int NumberOfHearts;
-    public Image[] hearts;
-    public Sprite fullHearts;
-    public Sprite halfHearts;
-    public Sprite emptyHearts;
-
-    private int maxHealth = 10;
-
+    
+    public Sprite HeartsFull;
+    public Sprite HeartsHalf;
+    public Sprite HeartsEmpty;
+    public static int maxHealth = 10;
+    public Image[] hearts = new Image[maxHealth];
     void Update()
     {
         if (NumberOfHearts > maxHealth)
@@ -30,15 +29,15 @@ public class Health : MonoBehaviour
         {
             if(health%2 != 0 && heartIteraor == health/2)
             {
-                hearts[heartIteraor].sprite = halfHearts;
+                hearts[heartIteraor].sprite = HeartsHalf;
             }
             else if(heartIteraor < health/2)
             {
-                hearts[heartIteraor].sprite = fullHearts;
+                hearts[heartIteraor].sprite = HeartsFull;
             } 
             else
             {
-                hearts[heartIteraor].sprite = emptyHearts;
+                hearts[heartIteraor].sprite = HeartsEmpty;
             }
 
 

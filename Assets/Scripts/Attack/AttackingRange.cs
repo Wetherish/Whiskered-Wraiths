@@ -30,7 +30,6 @@ public class RangedAttack : MonoBehaviour
         Vector2 mousePosition = VirtualCamera.ScreenToWorldPoint(Input.mousePosition);
         
         Vector2 direction = mousePosition - (Vector2)firePoint.position;
-        Debug.Log(mousePosition);
         direction.Normalize();
 
 

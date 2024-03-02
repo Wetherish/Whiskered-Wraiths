@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Main Camera
+  - coin
+  - heal
+  - adBuff
+  - msBuff
   layers:
   - Default
   - TransparentFX
@@ -44,4 +48,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Item
+    uniqueID: 699203073
     locked: 0
