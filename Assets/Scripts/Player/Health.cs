@@ -5,39 +5,40 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int health;
+    public int HeroHealth;
     public int NumberOfHearts;
-    
-    public Sprite HeartsFull;
-    public Sprite HeartsHalf;
-    public Sprite HeartsEmpty;
-    public static int maxHealth = 10;
-    public Image[] hearts = new Image[maxHealth];
+    public Image[] hearts;
+    public Sprite fullHearts;
+    public Sprite halfHearts;
+    public Sprite emptyHearts;
+
+    private int maxHealth = 10;
+
     void Update()
     {
         if (NumberOfHearts > maxHealth)
         {
             NumberOfHearts = maxHealth;
         }
-        
-        if(health > 2 * NumberOfHearts)
+
+        if(HeroHealth > 2 * NumberOfHearts)
         {
-            health = 2 * NumberOfHearts;
+            HeroHealth = 2 * NumberOfHearts;
         }
 
         for(int heartIteraor = 0; heartIteraor < hearts.Length; heartIteraor++)
         {
-            if(health%2 != 0 && heartIteraor == health/2)
+            if(HeroHealth%2 != 0 && heartIteraor == HeroHealth/2)
             {
-                hearts[heartIteraor].sprite = HeartsHalf;
+                hearts[heartIteraor].sprite = halfHearts;
             }
-            else if(heartIteraor < health/2)
+            else if(heartIteraor < HeroHealth/2)
             {
-                hearts[heartIteraor].sprite = HeartsFull;
+                hearts[heartIteraor].sprite = fullHearts;
             } 
             else
             {
-                hearts[heartIteraor].sprite = HeartsEmpty;
+                hearts[heartIteraor].sprite = emptyHearts;
             }
 
 
@@ -50,5 +51,13 @@ public class Health : MonoBehaviour
                 hearts[heartIteraor].enabled = false;
             }
         }
+    }
+    public void Heal(int heal)
+    {
+        if(HeroHealth == maxHealth)
+        {
+            return;
+        }
+        HeroHealth += heal;
     }
 }
