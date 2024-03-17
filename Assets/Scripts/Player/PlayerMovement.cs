@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     bool canDash;
     private IEnumerator Dash()
     {
-        canDash = false;
+        canDash = false;//dupa
         isDashing = true;
         rb.velocity = new Vector2(movementDirection.x * heroMovementStats.DashSpeed, movementDirection.y * heroMovementStats.DashSpeed);
         yield return new WaitForSeconds(heroMovementStats.DashTime);

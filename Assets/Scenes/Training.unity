@@ -1126,6 +1126,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &642361774 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8230174214691400135, guid: 985df7715de9e1b1899003a98b7a005b, type: 3}
+  m_PrefabInstance: {fileID: 7986741786036656320}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &642361781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642361774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152ea1c584d8d32429514e5cc9263c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
 --- !u!1 &655681997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,11 +1413,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7a7b60346fe12b4b862c086fe4b71c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 0.4
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  attackDamage: 2
+  heroMeleDamageStats: {fileID: 1685776719}
 --- !u!70 &702784987
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2652,9 +2669,10 @@ GameObject:
   - component: {fileID: 1685776716}
   - component: {fileID: 1685776717}
   - component: {fileID: 1685776718}
+  - component: {fileID: 1685776719}
   m_Layer: 0
   m_Name: Hero
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2671,10 +2689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6d8720587b1187498a57ac7800437da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
-  dashSpeed: 20
-  dashTime: 0.1
-  dashCooldown: 1
+  heroMovementStats: {fileID: 1685776719}
 --- !u!212 &1685776711
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2827,8 +2842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d59d1975b9687e48aac067b32b019f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeroHealth: 4
-  NumberOfHearts: 5
+  HPStats: {fileID: 1685776719}
   hearts:
   - {fileID: 875435942}
   - {fileID: 1016905944}
@@ -2867,10 +2881,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2016113075}
-  attackCooldown: 0.5
-  projectileSpeed: 10
   firePoint: {fileID: 1685776712}
   VirtualCamera: {fileID: 916742874}
+  heroRangeDamageStats: {fileID: 1685776719}
+  lastAttackTime: 0
 --- !u!114 &1685776718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2885,6 +2899,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heal: 1
   CoinCounter: 0
+--- !u!114 &1685776719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685776708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9e703c774f708ed979eeafddc838d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroHealth: 10
+  maxNumberOfHearts: 10
+  movementSpeed: 10
+  dashSpeed: 20
+  dashTime: 0.1
+  dashCooldown: 1
+  attackCooldown: 1
+  projectileSpeed: 5
+  rangeAttackDamage: 2
+  bulletSize: 1
+  attackRange: 2
+  meleAttackDamage: 2
 --- !u!1001 &1702021412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3608,6 +3646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775fb55dfd9915a90bdba2424554a58c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heal: 1
   CoinCounter: 0
 --- !u!1 &2016113075
 GameObject:
@@ -3770,11 +3809,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bed41f4ef4761a948b9f033381eec156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSize: 1
+  heroRangeDamageStats: {fileID: 1685776719}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  attackDamage: 2
 --- !u!1 &2113372279
 GameObject:
   m_ObjectHideFlags: 0
@@ -4176,7 +4214,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8230174214691400135, guid: 985df7715de9e1b1899003a98b7a005b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 642361781}
   m_SourcePrefab: {fileID: 100100000, guid: 985df7715de9e1b1899003a98b7a005b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
