@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
     [SerializeField] private HeroStats heroMovementStats;
     private Rigidbody2D rb;
     private Vector2 movementDirection;
     bool isDashing = false;
     bool canDash;
-
     private IEnumerator Dash()
     {
         canDash = false;

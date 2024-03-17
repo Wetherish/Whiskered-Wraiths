@@ -2,6 +2,20 @@ using UnityEngine;
 
 public class HeroStats : MonoBehaviour
 {
+    [Header("Health settings")]
+    [SerializeField] private int heroHealth = 10;
+    [SerializeField] private int maxNumberOfHearts = 10;
+    public int HeroHealth
+    {
+        get { return heroHealth; }
+        set { heroHealth = value; }
+    }
+    public int MaxNumberOfHearts
+    {
+        get { return maxNumberOfHearts; }
+        set { maxNumberOfHearts = value; }
+    }
+    
     [Header("Movement settings")]
     [SerializeField] private float movementSpeed = 10f;
 
