@@ -57,4 +57,15 @@ public class Health : MonoBehaviour
         }
         HPStats.HeroHealth += heal;
     }
+    
+    
+    public void TakeDamage(int damage)
+    {
+        HPStats.HeroHealth -= damage;
+        if (HPStats.HeroHealth <= 0)     
+        {
+            Destroy(gameObject);
+            
+        }
+    }
 }

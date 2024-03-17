@@ -5,18 +5,11 @@ using UnityEngine;
 
 public class EnemyMain : MonoBehaviour
 {
+    [SerializeField] private Health health;
     private bool canTouch = true;
     // Start is called before the first frame update
-    public int health;
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+  
     void Start()
     {
     }
@@ -34,6 +27,7 @@ public class EnemyMain : MonoBehaviour
             if (canTouch)
             {
                 Debug.Log("dmgtaken");
+                health.TakeDamage(1);
                 canTouch = false;
                 StartCoroutine(Waiting());
             }
