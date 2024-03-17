@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class BulletHit : MonoBehaviour
 {
-    public float bulletSize;
-    public LayerMask enemyLayer;
-    public int attackDamage;
+    [SerializeField] HeroStats heroRangeDamageStats;
+    [SerializeField] public LayerMask enemyLayer;   
     void Start()
     {
         
@@ -15,13 +14,13 @@ public class BulletHit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, bulletSize, enemyLayer);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, heroRangeDamageStats.BulletSize, enemyLayer);
         foreach (Collider2D collider in hitColliders)
         {
             EnemyDeath enemy = collider.GetComponent<EnemyDeath>();
             if (enemy != null)
             {
-                enemy.TakeDamage(attackDamage);
+                enemy.TakeDamage(heroRangeDamageStats.RangeAttackDamage);
                 Destroy(gameObject);
             }
 
