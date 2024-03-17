@@ -1,47 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int HeroHealth;
-    public int NumberOfHearts;
-    
-    public Sprite HeartsFull;
-    public Sprite HeartsHalf;
-    public Sprite HeartsEmpty;
-    public static int maxHealth = 10;
-    public Image[] hearts = new Image[maxHealth];
+    [SerializeField] HeroStats HPStats;
+    [SerializeField] private Image[] hearts;
+    [SerializeField] private Sprite fullHearts;
+    [SerializeField] private Sprite halfHearts;
+    [SerializeField] private Sprite emptyHearts;
+
+    private int maxHealth = 10;
+
     void Update()
     {
-        if (NumberOfHearts > maxHealth)
+        if (HPStats.MaxNumberOfHearts > maxHealth)
         {
-            NumberOfHearts = maxHealth;
+            HPStats.MaxNumberOfHearts = maxHealth;
         }
 
-        if(HeroHealth > 2 * NumberOfHearts)
+        if(HPStats.HeroHealth > 2 * HPStats.MaxNumberOfHearts)
         {
-            HeroHealth = 2 * NumberOfHearts;
+            HPStats.HeroHealth = 2 * HPStats.MaxNumberOfHearts;
         }
 
         for(int heartIteraor = 0; heartIteraor < hearts.Length; heartIteraor++)
         {
-            if(HeroHealth%2 != 0 && heartIteraor == HeroHealth/2)
+            if(HPStats.HeroHealth%2 != 0 && heartIteraor == HPStats.HeroHealth/2)
             {
-                hearts[heartIteraor].sprite = HeartsHalf;
+                hearts[heartIteraor].sprite = halfHearts;
             }
-            else if(heartIteraor < HeroHealth/2)
+            else if(heartIteraor < HPStats.HeroHealth/2)
             {
-                hearts[heartIteraor].sprite = HeartsFull;
+                hearts[heartIteraor].sprite = fullHearts;
             } 
             else
             {
-                hearts[heartIteraor].sprite = HeartsEmpty;
+                hearts[heartIteraor].sprite = emptyHearts;
             }
 
 
-            if(heartIteraor < NumberOfHearts)
+            if(heartIteraor < HPStats.MaxNumberOfHearts)
             {
                 hearts[heartIteraor].enabled = true;
             }
@@ -53,10 +51,10 @@ public class Health : MonoBehaviour
     }
     public void Heal(int heal)
     {
-        if(HeroHealth == maxHealth)
+        if(HPStats.HeroHealth == maxHealth)
         {
             return;
         }
-        HeroHealth += heal;
+        HPStats.HeroHealth += heal;
     }
 }

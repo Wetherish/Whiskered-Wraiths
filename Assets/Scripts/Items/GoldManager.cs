@@ -11,7 +11,7 @@ public class GoldManager : MonoBehaviour
     
     void Start()
     {
-        goldText.text = gold.ToString();
+        goldText.text = gold.ToString(); 
     }
 
     // Update is called once per frame
