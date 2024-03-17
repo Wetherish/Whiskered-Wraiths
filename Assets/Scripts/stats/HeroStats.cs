@@ -6,6 +6,9 @@ public class HeroStats : MonoBehaviour
     [SerializeField] private int heroHealth = 10;
     [SerializeField] private int maxNumberOfHearts = 10;
 
+
+    public bool Immune = false;
+
     [Header("Movement settings")]
     [SerializeField] private float movementSpeed = 10f;
 
@@ -20,9 +23,10 @@ public class HeroStats : MonoBehaviour
     [SerializeField] private int rangeAttackDamage;
     [SerializeField] private float bulletSize;
     
-    [Header("Mele attack settings")]
+    [Header("Melee attack settings")]
     [SerializeField] private float attackRange;
-    [SerializeField] private int meleAttackDamage;
+    [SerializeField] private float attackMeleeCooldown;
+    [SerializeField] private int meleeAttackDamage;
     public int HeroHealth
     {
         get { return heroHealth; }
@@ -62,6 +66,8 @@ public class HeroStats : MonoBehaviour
         get { return attackCooldown; }
         set { attackCooldown = value; }
     }
+    
+   
 
     public float ProjectileSpeed
     {
@@ -87,11 +93,16 @@ public class HeroStats : MonoBehaviour
         set { attackRange = value; }
     }
 
-    public int MeleAttackDamage
+    public int MeleeAttackDamage
     {
-        get { return meleAttackDamage; }
-        set { meleAttackDamage = value; }
+        get { return meleeAttackDamage; }
+        set { meleeAttackDamage = value; }
     }
     
+    public float AttackMeleeCooldown
+    {
+        get { return attackMeleeCooldown; }
+        set { attackCooldown = value; }
+    }
 
 }

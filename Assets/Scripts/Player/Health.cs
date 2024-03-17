@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using Unity.VisualScripting;
+
 
 public class Health : MonoBehaviour
 {
@@ -57,4 +60,25 @@ public class Health : MonoBehaviour
         }
         HPStats.HeroHealth += heal;
     }
+    
+    
+    public void TakeDamage(int damage)
+    {
+        HPStats.HeroHealth -= damage;
+        if (HPStats.HeroHealth <= 0)
+        {
+            StartCoroutine(Dying());
+            
+        }
+    }
+    
+    IEnumerator Dying()
+    {
+        yield return new WaitForNextFrameUnit();
+        HPStats.Immune = false;
+        Destroy(gameObject);
+
+    }
+    
 }
+
