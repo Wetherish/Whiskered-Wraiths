@@ -1,49 +1,40 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMain : MonoBehaviour
 {
     [SerializeField] private Health health;
-    private bool canTouch = true;
+
+    [SerializeField] private HeroStats heroStats;
     // Start is called before the first frame update
 
-  
+
     void Start()
     {
     }
 
     void Update()
     {
-
     }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
             //take dmg
-            if (canTouch)
+            if (heroStats.Immune == false)
             {
-                Debug.Log("dmgtaken");
+                Debug.Log("dmgTaken");
                 health.TakeDamage(1);
-                canTouch = false;
+                heroStats.Immune = true;
                 StartCoroutine(Waiting());
             }
-
-
         }
     }
 
     IEnumerator Waiting()
     {
         yield return new WaitForSeconds(1);
-        canTouch = true;
-
-
+        heroStats.Immune = false;
     }
-
-
-
 }
