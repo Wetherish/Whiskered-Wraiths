@@ -4,26 +4,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 10f;
+    [SerializeField] private HeroStats heroMovementStats;
     private Rigidbody2D rb;
     private Vector2 movementDirection;
-    private Vector2 mousePosition;
-    
-    [Header("Dash settings")]
-    [SerializeField] private float dashSpeed = 20f;
-    [SerializeField] private float dashTime = 0.1f;
-    [SerializeField] private float dashCooldown = 1f;
     bool isDashing = false;
     bool canDash;
-
     private IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
-        rb.velocity = new Vector2(movementDirection.x * dashSpeed, movementDirection.y * dashSpeed);
-        yield return new WaitForSeconds(dashTime);
+        rb.velocity = new Vector2(movementDirection.x * heroMovementStats.DashSpeed, movementDirection.y * heroMovementStats.DashSpeed);
+        yield return new WaitForSeconds(heroMovementStats.DashTime);
         isDashing = false;
-        yield return new WaitForSeconds(dashCooldown);
+        yield return new WaitForSeconds(heroMovementStats.DashCooldown);
         canDash = true;
     }
     
@@ -58,20 +51,20 @@ public class PlayerMovement : MonoBehaviour
         if (movementDirection.x != 0 && movementDirection.y != 0)
         {
             // Apply diagonal speed multiplier
-            rb.velocity = movementDirection * movementSpeed * 1.4f;
+            rb.velocity = movementDirection * heroMovementStats.MovementSpeed * 1.4f;
         }
 
         else
         {
-            rb.velocity = movementDirection * movementSpeed;
+            rb.velocity = movementDirection * heroMovementStats.MovementSpeed;
         }
     }
     public void MovementSpeedBuff(float msBuff){
-        movementSpeed += msBuff;
+        heroMovementStats.MovementSpeed += msBuff;
     }
     public float getMS()
     {
-        return movementSpeed;
+        return heroMovementStats.MovementSpeed;
     }
 
 }
