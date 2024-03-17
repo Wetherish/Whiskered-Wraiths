@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    public int heal = 1;
     PlayerMovement playerMovement;
     public int CoinCounter;
     // Start is called before the first frame update
@@ -12,23 +13,22 @@ public class Coin : MonoBehaviour
         if (collision.gameObject.CompareTag("coin"))
         {
             Destroy(collision.gameObject);
-            CoinCounter++;
+            GoldManager gold = GameObject.Find("Canvas").GetComponent<GoldManager>();
+            gold.gold++;
         }
 
         if (collision.gameObject.CompareTag("heal"))
         {
             Health hp = GameObject.Find("Hero").GetComponent<Health>();
             Destroy(collision.gameObject);
-            hp.health++;      
+            hp.Heal(heal);      
         }
 
         if (collision.gameObject.CompareTag("msBuff"))
         {
             playerMovement = GameObject.Find("Hero").GetComponent<PlayerMovement>();
             Destroy(collision.gameObject);
-            Debug.Log("movementSpeed:" + playerMovement.getMS());
             playerMovement.MovementSpeedBuff(5f);
-            Debug.Log("movementSpeed:" + playerMovement.getMS());
         }
     }
 }   

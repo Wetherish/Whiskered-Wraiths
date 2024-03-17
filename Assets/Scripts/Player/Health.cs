@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int health;
+    public int HeroHealth;
     public int NumberOfHearts;
     
     public Sprite HeartsFull;
@@ -19,19 +19,19 @@ public class Health : MonoBehaviour
         {
             NumberOfHearts = maxHealth;
         }
-        
-        if(health > 2 * NumberOfHearts)
+
+        if(HeroHealth > 2 * NumberOfHearts)
         {
-            health = 2 * NumberOfHearts;
+            HeroHealth = 2 * NumberOfHearts;
         }
 
         for(int heartIteraor = 0; heartIteraor < hearts.Length; heartIteraor++)
         {
-            if(health%2 != 0 && heartIteraor == health/2)
+            if(HeroHealth%2 != 0 && heartIteraor == HeroHealth/2)
             {
                 hearts[heartIteraor].sprite = HeartsHalf;
             }
-            else if(heartIteraor < health/2)
+            else if(heartIteraor < HeroHealth/2)
             {
                 hearts[heartIteraor].sprite = HeartsFull;
             } 
@@ -50,5 +50,13 @@ public class Health : MonoBehaviour
                 hearts[heartIteraor].enabled = false;
             }
         }
+    }
+    public void Heal(int heal)
+    {
+        if(HeroHealth == maxHealth)
+        {
+            return;
+        }
+        HeroHealth += heal;
     }
 }
