@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class EnemyMain : MonoBehaviour
@@ -6,6 +5,7 @@ public class EnemyMain : MonoBehaviour
     [SerializeField] private Health health;
 
     [SerializeField] private HeroStats heroStats;
+    [SerializeField] private HealthManager heroHp;
     // Start is called before the first frame update
 
     void Start()
@@ -20,20 +20,9 @@ public class EnemyMain : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //take dmg
-            if (heroStats.Immune == false)
-            {
-                Debug.Log("dmgTaken");
-                health.TakeDamage(1);
-                heroStats.Immune = true;
-                StartCoroutine(Waiting());
-            }
+            heroHp.TakeDamage(1);
         }
     }
 
-    IEnumerator Waiting()
-    {
-        yield return new WaitForSeconds(1);
-        heroStats.Immune = false;
-    }
+    
 }

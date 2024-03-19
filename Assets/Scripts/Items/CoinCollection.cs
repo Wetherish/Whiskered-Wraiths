@@ -19,7 +19,7 @@ public class Coin : MonoBehaviour
 
         if (collision.gameObject.CompareTag("heal"))
         {
-            Health hp = GameObject.Find("Hero").GetComponent<Health>();
+            HealthManager hp = GameObject.Find("Hero").GetComponent<HealthManager>();
             Destroy(collision.gameObject);
             hp.Heal(heal);      
         }
