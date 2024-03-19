@@ -6,9 +6,6 @@ public class HeroStats : MonoBehaviour
     [SerializeField] private int heroHealth = 10;
     [SerializeField] private int maxNumberOfHearts = 10;
 
-
-    public bool Immune = false;
-
     [Header("Movement settings")]
     [SerializeField] private float movementSpeed = 10f;
 
@@ -104,5 +101,4 @@ public class HeroStats : MonoBehaviour
         get { return attackMeleeCooldown; }
         set { attackCooldown = value; }
     }
-
 }

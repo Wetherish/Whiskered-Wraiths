@@ -1,8 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using Unity.VisualScripting;
-
 
 public class Health : MonoBehaviour
 {
@@ -12,13 +9,16 @@ public class Health : MonoBehaviour
     [SerializeField] private Sprite halfHearts;
     [SerializeField] private Sprite emptyHearts;
 
+
     private int maxHealth = 10;
+
+    
 
     void Update()
     {
         if (HPStats.MaxNumberOfHearts > maxHealth)
         {
-            HPStats.MaxNumberOfHearts = maxHealth;
+            HPStats.MaxNumberOfHearts = maxHealth;  //??
         }
 
         if(HPStats.HeroHealth > 2 * HPStats.MaxNumberOfHearts)
@@ -52,33 +52,5 @@ public class Health : MonoBehaviour
             }
         }
     }
-    public void Heal(int heal)
-    {
-        if(HPStats.HeroHealth == maxHealth)
-        {
-            return;
-        }
-        HPStats.HeroHealth += heal;
-    }
-    
-    
-    public void TakeDamage(int damage)
-    {
-        HPStats.HeroHealth -= damage;
-        if (HPStats.HeroHealth <= 0)
-        {
-            StartCoroutine(Dying());
-            
-        }
-    }
-    
-    IEnumerator Dying()
-    {
-        yield return new WaitForNextFrameUnit();
-        HPStats.Immune = false;
-        Destroy(gameObject);
-
-    }
-    
 }
 
