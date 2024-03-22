@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Main Camera
+  - coin
+  - heal
+  - adBuff
+  - msBuff
   layers:
   - Default
   - TransparentFX
@@ -42,6 +46,18 @@ TagManager:
   - name: BackGround
     uniqueID: 1789236393
     locked: 0
+  - name: walls
+    uniqueID: 699203073
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 1005550739
+    locked: 0
+  - name: HeroStats
+    uniqueID: 690804205
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Item
+    uniqueID: 699203073
     locked: 0
