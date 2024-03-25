@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
@@ -30,5 +28,13 @@ public class Coin : MonoBehaviour
             Destroy(collision.gameObject);
             playerMovement.MovementSpeedBuff(5f);
         }
+        if (collision.gameObject.CompareTag("ProjectileDash"))
+        {
+            playerMovement = GameObject.Find("Hero").GetComponent<PlayerMovement>();
+            Destroy(collision.gameObject);
+            Debug.Log("DashProjectile");
+            playerMovement.makeDashProjectile();
+        }
+
     }
 }   

@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -11,14 +7,16 @@ public class EnemyMovement : MonoBehaviour
     public float moveSpeed = 5f;
     private Vector2 movement;
 
-    
+    private Transform firePoint;
+    private Camera virtualCamera;
+    private HeroStats heroStats;
+    private float lastAttackTime; 
+
     void Start()
     {
       rb = this.GetComponent<Rigidbody2D>();
 
     }
-
-    // Update is called once per frame
     void Update()
     {
        Vector3 direction = player.position - transform.position;
