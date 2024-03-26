@@ -16,8 +16,7 @@ public class HealthManager : MonoBehaviour
         heroStats.HeroHealth += heal;
     }
      private void ResolveTakeDamage(int damage)
-    {//
-       
+    {
         heroStats.HeroHealth -= damage;
         if (heroStats.HeroHealth <= 0)
         {

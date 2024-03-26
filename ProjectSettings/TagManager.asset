@@ -14,7 +14,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - heroLayer
   - Water
   - UI
   - enemyLayer
