@@ -1,0 +1,4 @@
+interface przesunac do gory
+pociski przyspieszyc 
+sterowanie
+indykator obrazen 

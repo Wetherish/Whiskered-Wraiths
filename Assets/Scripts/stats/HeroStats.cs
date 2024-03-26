@@ -64,8 +64,6 @@ public class HeroStats : MonoBehaviour
         set { attackCooldown = value; }
     }
     
-   
-
     public float ProjectileSpeed
     {
         get { return projectileSpeed; }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,50 +5,38 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private HeroStats heroMovementStats;
     private Rigidbody2D rb;
     private Vector2 movementDirection;
-    bool isDashing = false;
-    bool canDash;
-    private IEnumerator Dash()
-    {
-        canDash = false;//dupa
-        isDashing = true;
-        rb.velocity = new Vector2(movementDirection.x * heroMovementStats.DashSpeed, movementDirection.y * heroMovementStats.DashSpeed);
-        yield return new WaitForSeconds(heroMovementStats.DashTime);
-        isDashing = false;
-        yield return new WaitForSeconds(heroMovementStats.DashCooldown);
-        canDash = true;
-    }
-    
+
+    private Dash movementDash;
     void Start()
     {
+        movementDash = this.gameObject.AddComponent<DashSimple>();
         rb = GetComponent<Rigidbody2D>();
-        canDash = true;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
-        if (isDashing)
+        if (movementDash.IsDashing())
         {
             return;
         }
         movementDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
-        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        if (Input.GetKeyDown(KeyCode.Space) && movementDash.CanDash())
         {
-            StartCoroutine(Dash());
+            StartCoroutine(movementDash.dash(movementDirection, heroMovementStats.DashSpeed, heroMovementStats.DashTime, heroMovementStats.DashCooldown));
         }
     }
     
     void FixedUpdate()
     {
-        if (isDashing)
+        if (movementDash.IsDashing())
         {
             return;
         }
 
         if (movementDirection.x != 0 && movementDirection.y != 0)
         {
-            // Apply diagonal speed multiplier
             rb.velocity = movementDirection * heroMovementStats.MovementSpeed * 1.4f;
         }
 
@@ -65,6 +51,11 @@ public class PlayerMovement : MonoBehaviour
     public float getMS()
     {
         return heroMovementStats.MovementSpeed;
+    }
+
+    public void makeDashProjectile()
+    {
+        movementDash = this.gameObject.AddComponent<DashProjectile>();
     }
 
 }
