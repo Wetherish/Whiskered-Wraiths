@@ -1,17 +1,20 @@
-using UnityEngine;
-
-public class Enemy : MonoBehaviour
+namespace Enemy
 {
-    // Start is called before the first frame update
-    private int health;
+    using UnityEngine;
 
-    public void TakeDamage(int damage)
+    public class Enemy : MonoBehaviour
     {
-        health -= damage;
-        if (health <= 0)     
+        // Start is called before the first frame update
+        private int _health;
+
+        public void TakeDamage(int damage)
         {
-            Destroy(gameObject);
-            
+            _health -= damage;
+            if (_health <= 0)
+            {
+                Destroy(gameObject);
+
+            }
         }
     }
 }

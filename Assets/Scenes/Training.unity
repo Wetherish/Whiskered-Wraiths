@@ -172,8 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7ab03130f18b885886d0176c282709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 1685776715}
-  heroStats: {fileID: 1685776719}
   heroHp: {fileID: 1685776720}
 --- !u!114 &38401612
 MonoBehaviour:
@@ -787,8 +785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7ab03130f18b885886d0176c282709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 1685776715}
-  heroStats: {fileID: 1685776719}
   heroHp: {fileID: 1685776720}
 --- !u!114 &317912054
 MonoBehaviour:
@@ -1534,8 +1530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7ab03130f18b885886d0176c282709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 1685776715}
-  heroStats: {fileID: 1685776719}
   heroHp: {fileID: 1685776720}
 --- !u!1 &655681997
 GameObject:
@@ -2772,7 +2766,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heal: 1
-  CoinCounter: 0
 --- !u!1 &1325892641 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 293231084618670320, guid: 62d8e968fe8db5f9785cc8763c3a6cc3, type: 3}
@@ -2791,7 +2784,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heal: 1
-  CoinCounter: 0
 --- !u!1 &1348904534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,7 +3054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 946fc858ed79ba94f8a46305b488c0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: Boss
+  sceneToLoad: 
 --- !u!1 &1534977452
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,8 +3247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7ab03130f18b885886d0176c282709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 1685776715}
-  heroStats: {fileID: 1685776719}
   heroHp: {fileID: 1685776720}
 --- !u!114 &1606319731
 MonoBehaviour:
@@ -3609,7 +3599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d59d1975b9687e48aac067b32b019f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HPStats: {fileID: 1685776719}
+  hpStats: {fileID: 1685776719}
   hearts:
   - {fileID: 875435942}
   - {fileID: 1016905944}
@@ -3660,7 +3650,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heal: 1
-  CoinCounter: 0
 --- !u!114 &1685776719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3723,7 +3712,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170b5af5bf4b25cfea6a22ee34708748, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroStats: {fileID: 0}
 --- !u!114 &1685776723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3738,8 +3726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
-  heroStats: {fileID: 0}
+    m_Bits: 64
+  heroStats: {fileID: 1685776719}
 --- !u!114 &1685776724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4293,7 +4281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heal: 1
-  CoinCounter: 0
 --- !u!1 &1940145694
 GameObject:
   m_ObjectHideFlags: 0
@@ -4554,7 +4541,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heal: 1
-  CoinCounter: 0
 --- !u!1 &2016113075
 GameObject:
   m_ObjectHideFlags: 0
@@ -4927,8 +4913,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7ab03130f18b885886d0176c282709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 1685776715}
-  heroStats: {fileID: 1685776719}
   heroHp: {fileID: 1685776720}
 --- !u!114 &2125065706
 MonoBehaviour:

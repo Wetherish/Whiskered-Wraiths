@@ -4,77 +4,74 @@ using UnityEngine;
 
 public class CrazyMoveset : MonoBehaviour
 {
-    private float radius = 7;
     [SerializeField] private GameObject enemyBullet;
-    [SerializeField] private float PassiveCooldown;
+    [SerializeField] private float passiveCooldown;
     [SerializeField] private Transform crazyBody;
-    private bool crazyCanShoot = false;
-    [SerializeField] private CrazyBullet CrazyBullet;
-    [SerializeField] private float OrbLength;
-    public List<GameObject> gameObjects;
-    private List<float> angles;
-    private float spinSpeed = 1f;
-    
-    void Start()
-    {
-        angles = new List<float>();  
-    }
+    [SerializeField] private float orbLength;
+    [SerializeField] private float startShotSpeed;
+    [SerializeField] private float jerkShotSpeed;
 
-    // Update is called once per frame
+    private bool _canShoot;
+    private readonly List<GameObject> _gameObjects = new List<GameObject>();
+    private readonly List<float> _angles = new List<float>();
+    private readonly float _spinSpeed = 1f;
+
     void Update()
     {
-        
-        for (int i = 0; i < gameObjects.Count; i++)
+        for (int i = 0; i < _gameObjects.Count; i++)
         {
-            GameObject gameObject = gameObjects[i];
-            float angle = angles[i] + spinSpeed * Time.deltaTime; // Increment the angle
-            Vector3 newPosition = crazyBody.position;
-            newPosition.x += radius * Mathf.Cos(angle);
-            newPosition.y += radius * Mathf.Sin(angle);
-            gameObject.transform.position = newPosition;
-            angles[i] = angle; // Store the updated angle
+            var localGameObject = _gameObjects[i];
+            var angle = _angles[i] + _spinSpeed * Time.deltaTime;
+            var newPosition = crazyBody.position;
+            newPosition.x += 7*Mathf.Cos(angle);
+            newPosition.y += 7*Mathf.Sin(angle);
+            localGameObject.transform.position = newPosition;
+            _angles[i] = angle;
         }
-        
-        if (crazyCanShoot == false)
+
+        if (!_canShoot)
         {
-            CrazyShoot();
-            StartCoroutine(AurelionDestroyOrbs());
-            StartCoroutine(AurelionSol());
-            crazyCanShoot = true;
- 
-        }
-    }
-    
-    IEnumerator AurelionSol()
-    {
-            yield return new WaitForSeconds(PassiveCooldown);
-            crazyCanShoot = false;
-    }
-    
-    IEnumerator AurelionDestroyOrbs()
-    {
-        yield return new WaitForSeconds(OrbLength);
-        foreach (GameObject Kulka in gameObjects)
-        {
-            //CrazyBullet.OneTimeGoing();
-            Kulka.GetComponent<CrazyBullet>().OneTimeGoing();
-        }
-        gameObjects.Clear(); 
-        angles.Clear(); 
-    }
-    
-    void CrazyShoot()
-    { 
-        float radius = 7; // The radius of the circle
-        for (int j = 0; j < 10; j++)
-        {
-            float angle = j * Mathf.PI * 2 / 10; // Divide the circle into 10 parts
-            Vector3 newPosition = crazyBody.position;
-            newPosition.x += radius * Mathf.Cos(angle);
-            newPosition.y += radius * Mathf.Sin(angle);
-            gameObjects.Add(Instantiate(enemyBullet, newPosition, crazyBody.rotation, crazyBody));
-            angles.Add(angle); // Store the initial angle
+            Shoot();
+            StartCoroutine(DestroyOrbs());
+            StartCoroutine(ResetShoot());
+            _canShoot = true;
         }
     }
 
+    IEnumerator ResetShoot()
+    {
+        yield return new WaitForSeconds(passiveCooldown);
+        _canShoot = false;
+    }
+
+    IEnumerator DestroyOrbs()
+    {
+        yield return new WaitForSeconds(orbLength);
+
+        foreach (var localGameObject in _gameObjects)
+        {
+            var bullet = localGameObject.GetComponent<Bullet.CrazyBullet>();
+            bullet.moveSpeed = startShotSpeed;
+            bullet.acceleration = jerkShotSpeed;
+            bullet.ThrowAtPlayer();
+            Destroy(localGameObject, 3f);
+        }
+
+        _gameObjects.Clear();
+        _angles.Clear();
+    }
+
+    void Shoot()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            var angle = i * Mathf.PI * 2 / 10;
+            var newPosition = crazyBody.position;
+            newPosition.x += 7*Mathf.Cos(angle);
+            newPosition.y += 7*Mathf.Sin(angle);
+            var bullet = Instantiate(enemyBullet, newPosition, Quaternion.identity, crazyBody);
+            _gameObjects.Add(bullet);
+            _angles.Add(angle);
+        }
+    }
 }

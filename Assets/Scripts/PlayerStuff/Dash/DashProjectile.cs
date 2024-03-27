@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Stats;
 public class DashProjectile : Dash {
     private bool isDashing = false;
     private Rigidbody2D rb;
