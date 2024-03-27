@@ -9,9 +9,9 @@ namespace PlayerStuff.Attack
         public HeroStats heroStats;
         private float _lastAttackTime;
 
-        void Awake()
+        private void Awake()
         {
-            heroStats = this.gameObject.GetComponent<HeroStats>();
+            heroStats = gameObject.GetComponent<HeroStats>();
             Debug.Log("HeroStats: " + heroStats.AttackCooldown);
         }
 
@@ -27,10 +27,7 @@ namespace PlayerStuff.Attack
 
         public override bool CanAttack()
         {
-            if (Time.time - _lastAttackTime >= heroStats.AttackCooldown || _lastAttackTime == 0)
-            {
-                return true;
-            }
+            if (Time.time - _lastAttackTime >= heroStats.AttackCooldown || _lastAttackTime == 0) return true;
 
             return false;
         }

@@ -2,25 +2,25 @@ namespace Items
 {
     using UnityEngine;
     using PlayerStuff;
-    
+
     public class Coin : MonoBehaviour
     {
         public int heal = 1;
-        PlayerMovement _playerMovement;
-        
+        private PlayerMovement _playerMovement;
+
         // Start is called before the first frame update
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("coin"))
             {
                 Destroy(collision.gameObject);
-                GoldManager gold = GameObject.Find("Canvas").GetComponent<GoldManager>();
+                var gold = GameObject.Find("Canvas").GetComponent<GoldManager>();
                 gold.gold++;
             }
 
             if (collision.gameObject.CompareTag("heal"))
             {
-                HealthManager hp = GameObject.Find("Hero").GetComponent<HealthManager>();
+                var hp = GameObject.Find("Hero").GetComponent<HealthManager>();
                 Destroy(collision.gameObject);
                 hp.Heal(heal);
             }
@@ -40,7 +40,6 @@ namespace Items
                 Debug.Log("DashProjectile");
                 _playerMovement.MakeDashProjectile();
             }
-
         }
     }
 }

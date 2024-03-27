@@ -1,60 +1,62 @@
-using System.Collections;
-using UnityEngine;
-using Stats;
-public class DashProjectile : Dash
+namespace PlayerStuff.Dash
 {
-    private bool _isDashing;
-    private Rigidbody2D _rb;
-    private bool canDash;
-    private Transform _firePoint;
-    private Camera _virtualCamera;
-    private HeroStats _heroStats;
+    using System.Collections;
+    using UnityEngine;
+    using Stats;
 
-
-
-    private GameObject _projectilePrefab;
-
-    public void Shoot()
+    public class DashProjectile : Dash
     {
-        Vector2 mousePosition = _virtualCamera.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = mousePosition - (Vector2)_firePoint.position;
-        direction.Normalize();
-        GameObject projectile = Instantiate(_projectilePrefab, _firePoint.position, _firePoint.rotation);
-        Rigidbody2D projectileRigidbody = projectile.GetComponent<Rigidbody2D>();
-        projectileRigidbody.velocity = direction * _heroStats.ProjectileSpeed;
-    }
-    
-    void Start()
-    {
-        _projectilePrefab  = GameObject.Find("projectileBullet"); 
-        _firePoint =  GameObject.Find("Hero").transform;
-        _virtualCamera = GameObject.Find("Camera").GetComponent<Camera>();
-        _heroStats = GetComponent<HeroStats>();
-        _rb = GetComponent<Rigidbody2D>();
-        canDash = true;
-    }
+        private bool _isDashing;
+        private Rigidbody2D _rb;
+        private bool _canDash;
+        private Transform _firePoint;
+        private Camera _virtualCamera;
+        private HeroStats _heroStats;
 
-    public override IEnumerator dash(Vector2 movementDirection, float dashSpeed, float dashTime, float dashCooldown)
-    {
-       
-        canDash = false;
-        _isDashing = true;
-        Shoot();
-        _rb.velocity = new Vector2(movementDirection.x * dashSpeed, movementDirection.y * dashSpeed);
-        yield return new WaitForSeconds(dashTime);
-        _isDashing = false;
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
-    }
 
-    public override bool IsDashing()
-    {
-        return _isDashing;
-    }
+        private GameObject _projectilePrefab;
 
-    public override bool CanDash()
-    {
-        return canDash;
+        private void Shoot()
+        {
+            Vector2 mousePosition = _virtualCamera.ScreenToWorldPoint(Input.mousePosition);
+            var direction = mousePosition - (Vector2)_firePoint.position;
+            direction.Normalize();
+            var projectile = Instantiate(_projectilePrefab, _firePoint.position, _firePoint.rotation);
+            var projectileRigidbody = projectile.GetComponent<Rigidbody2D>();
+            projectileRigidbody.velocity = direction * _heroStats.ProjectileSpeed;
+        }
+
+        private void Start()
+        {
+            _projectilePrefab = GameObject.Find("projectileBullet");
+            _firePoint = GameObject.Find("Hero").transform;
+            _virtualCamera = GameObject.Find("Camera").GetComponent<Camera>();
+            _heroStats = GetComponent<HeroStats>();
+            _rb = GetComponent<Rigidbody2D>();
+            _canDash = true;
+        }
+
+        public override IEnumerator DoDash(Vector2 movementDirection, float dashSpeed, float dashTime,
+            float dashCooldown)
+        {
+            _canDash = false;
+            _isDashing = true;
+            Shoot();
+            _rb.velocity = new Vector2(movementDirection.x * dashSpeed, movementDirection.y * dashSpeed);
+            yield return new WaitForSeconds(dashTime);
+            _isDashing = false;
+            yield return new WaitForSeconds(dashCooldown);
+            _canDash = true;
+        }
+
+        public override bool IsDashing()
+        {
+            return _isDashing;
+        }
+
+        public override bool CanDash()
+        {
+            return _canDash;
+        }
     }
-    
 }

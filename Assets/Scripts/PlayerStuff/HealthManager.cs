@@ -8,24 +8,23 @@ namespace PlayerStuff
 
     public class HealthManager : MonoBehaviour
     {
-        [SerializeField] HeroStats heroStats;
+        [SerializeField] private HeroStats heroStats;
         private GameObject _playerObject;
         private GameObject _cameraTag;
         private GameObject _ui;
-        void Start()
+
+        private void Start()
         {
             _playerObject = GameObject.FindWithTag("Player");
             _cameraTag = GameObject.FindWithTag("Main Camera");
             _ui = GameObject.FindWithTag("UITag");
         }
+
         private bool Immune { get; set; }
 
         public void Heal(int heal)
         {
-            if (heroStats.HeroHealth == heroStats.MaxNumberOfHearts * 2)
-            {
-                return;
-            }
+            if (heroStats.HeroHealth == heroStats.MaxNumberOfHearts * 2) return;
 
             Debug.Log("Heal");
             heroStats.HeroHealth += heal;
@@ -34,10 +33,7 @@ namespace PlayerStuff
         private void ResolveTakeDamage(int damage)
         {
             heroStats.HeroHealth -= damage;
-            if (heroStats.HeroHealth <= 0)
-            {
-                StartCoroutine(Dying());
-            }
+            if (heroStats.HeroHealth <= 0) StartCoroutine(Dying());
         }
 
         public void TakeDamage(int damage)
@@ -50,13 +46,13 @@ namespace PlayerStuff
             }
         }
 
-        IEnumerator Waiting()
+        private IEnumerator Waiting()
         {
             yield return new WaitForSeconds(1);
             Immune = false;
         }
 
-        IEnumerator Dying()
+        private IEnumerator Dying()
         {
             yield return new WaitForNextFrameUnit();
             Immune = false;
@@ -65,7 +61,6 @@ namespace PlayerStuff
             Destroy(_cameraTag);
             Destroy(_ui);
             SceneManager.LoadScene("Died");
-
         }
     }
 }

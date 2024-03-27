@@ -8,13 +8,13 @@ namespace Items
         public TMP_Text goldText;
         public int gold;
 
-        void Start()
+        private void Start()
         {
             goldText.text = gold.ToString();
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             goldText.text = gold.ToString();
         }

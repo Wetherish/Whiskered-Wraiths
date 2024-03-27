@@ -6,18 +6,19 @@ namespace Bullet
 
     public class BulletHit : MonoBehaviour
     {
-        [SerializeField] HeroStats heroRangeDamageStats;
+        [SerializeField] private HeroStats heroRangeDamageStats;
         [SerializeField] public LayerMask enemyLayer;
-        
+
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            Collider2D[] hitColliders = new Collider2D[10]; // Adjust the size as needed
-            int numColliders = Physics2D.OverlapCircleNonAlloc(transform.position, heroRangeDamageStats.BulletSize, hitColliders, enemyLayer);
-    
-            for (int i = 0; i < numColliders; i++)
+            var hitColliders = new Collider2D[10]; // Adjust the size as needed
+            var numColliders = Physics2D.OverlapCircleNonAlloc(transform.position, heroRangeDamageStats.BulletSize,
+                hitColliders, enemyLayer);
+
+            for (var i = 0; i < numColliders; i++)
             {
-                EnemyDeath enemy = hitColliders[i].GetComponent<EnemyDeath>();
+                var enemy = hitColliders[i].GetComponent<EnemyDeath>();
                 if (enemy != null)
                 {
                     enemy.TakeDamage(heroRangeDamageStats.RangeAttackDamage);

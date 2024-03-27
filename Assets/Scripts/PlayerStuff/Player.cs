@@ -5,34 +5,24 @@ namespace PlayerStuff
 
     public class Player : MonoBehaviour
     {
-        AttackBase _leftClickAttack;
-        AttackBase _rightClickAttack;
-       
-        void Start()
+        private AttackBase _leftClickAttack;
+        private AttackBase _rightClickAttack;
+
+        private void Start()
         {
             _leftClickAttack = gameObject.AddComponent<AttackRange>();
             _rightClickAttack = gameObject.AddComponent<AttackMelee>();
         }
 
-        void Update()
+        private void Update()
         {
             if (_leftClickAttack.IsAttacking())
-            {
                 if (_leftClickAttack.CanAttack())
-                {
                     _leftClickAttack.Attack();
-                }
-            }
 
             if (_rightClickAttack.IsAttacking())
-            {
                 if (_rightClickAttack.CanAttack())
-                {
                     _rightClickAttack.Attack();
-                }
-
-            }
-
         }
     }
 }

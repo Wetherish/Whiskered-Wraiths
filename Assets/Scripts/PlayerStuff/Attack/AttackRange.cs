@@ -1,6 +1,5 @@
 namespace PlayerStuff.Attack
 {
-
     using UnityEngine;
     using Stats;
 
@@ -12,7 +11,7 @@ namespace PlayerStuff.Attack
         private HeroStats _heroStats;
         private float _lastAttackTime;
 
-        void Start()
+        private void Start()
         {
             _projectilePrefab = GameObject.Find("Bullet");
             _firePoint = GameObject.Find("Hero").transform;
@@ -24,12 +23,12 @@ namespace PlayerStuff.Attack
         {
             Vector2 mousePosition = _virtualCamera.ScreenToWorldPoint(Input.mousePosition);
 
-            Vector2 direction = mousePosition - (Vector2)_firePoint.position;
+            var direction = mousePosition - (Vector2)_firePoint.position;
             direction.Normalize();
 
-            GameObject projectile = Instantiate(_projectilePrefab, _firePoint.position, _firePoint.rotation);
+            var projectile = Instantiate(_projectilePrefab, _firePoint.position, _firePoint.rotation);
 
-            Rigidbody2D projectileRigidbody = projectile.GetComponent<Rigidbody2D>();
+            var projectileRigidbody = projectile.GetComponent<Rigidbody2D>();
             projectileRigidbody.velocity = direction * _heroStats.ProjectileSpeed;
         }
 

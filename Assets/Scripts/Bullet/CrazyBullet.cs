@@ -2,6 +2,7 @@ namespace Bullet
 {
     using UnityEngine;
     using PlayerStuff;
+
     public class CrazyBullet : MonoBehaviour
     {
         [SerializeField] public LayerMask player;
@@ -16,7 +17,7 @@ namespace Bullet
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
-            GameObject playerObject = GameObject.FindWithTag("Player");
+            var playerObject = GameObject.FindWithTag("Player");
             playerPosition = playerObject.transform;
         }
 
@@ -30,27 +31,24 @@ namespace Bullet
             MoveCharacter(_movement);
         }
 
-        
+
         private void CheckCollisions()
         {
-            int numColliders = Physics2D.OverlapCircleNonAlloc(transform.position, 1, _hitColliders, player);
+            var numColliders = Physics2D.OverlapCircleNonAlloc(transform.position, 1, _hitColliders, player);
 
-            for (int i = 0; i < numColliders; i++)
+            for (var i = 0; i < numColliders; i++)
             {
-                HealthManager hero = _hitColliders[i].GetComponent<HealthManager>();
-                if (hero != null)
-                {
-                    hero.TakeDamage(1);
-                }
+                var hero = _hitColliders[i].GetComponent<HealthManager>();
+                if (hero != null) hero.TakeDamage(1);
             }
         }
 
-       private void MoveCharacter(Vector2 direction)
+        private void MoveCharacter(Vector2 direction)
         {
             acceleration += jerk;
             moveSpeed += acceleration;
-            float moveStep = moveSpeed * Time.deltaTime;
-            _rb.MovePosition((Vector2)transform.position + (direction * moveStep));
+            var moveStep = moveSpeed * Time.deltaTime;
+            _rb.MovePosition((Vector2)transform.position + direction * moveStep);
         }
 
         public void DestroyCrazyBullet()
@@ -60,7 +58,7 @@ namespace Bullet
 
         public void ThrowAtPlayer()
         {
-            Vector3 direction = playerPosition.position - transform.position;
+            var direction = playerPosition.position - transform.position;
             direction.Normalize();
             _movement = direction;
         }

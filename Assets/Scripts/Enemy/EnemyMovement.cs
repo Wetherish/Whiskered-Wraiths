@@ -10,17 +10,16 @@ namespace Enemy
         private Vector2 _movement;
 
 
-        void Start()
+        private void Start()
         {
-            _rb = this.GetComponent<Rigidbody2D>();
-            GameObject playerObject = GameObject.FindWithTag("Player");
+            _rb = GetComponent<Rigidbody2D>();
+            var playerObject = GameObject.FindWithTag("Player");
             player = playerObject.transform;
-
         }
 
-        void Update()
+        private void Update()
         {
-            Vector3 direction = player.position - transform.position;
+            var direction = player.position - transform.position;
             direction.Normalize();
             _movement = direction;
         }
@@ -30,10 +29,9 @@ namespace Enemy
             MoveCharacter(_movement);
         }
 
-       void MoveCharacter(Vector2 direction)
-{
-    _rb.MovePosition((Vector2)transform.position + (direction * (moveSpeed * Time.deltaTime)));
-}
-
+        private void MoveCharacter(Vector2 direction)
+        {
+            _rb.MovePosition((Vector2)transform.position + direction * (moveSpeed * Time.deltaTime));
+        }
     }
 }

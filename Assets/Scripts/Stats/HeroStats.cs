@@ -1,12 +1,9 @@
 namespace Stats
 {
-
     using UnityEngine;
 
     public class HeroStats : MonoBehaviour
     {
-       
-        
         [Header("Health settings")] [SerializeField]
         private int heroHealth = 10;
 
@@ -33,7 +30,7 @@ namespace Stats
 
         [SerializeField] private float attackMeleeCooldown;
         [SerializeField] private int meleeAttackDamage;
-        
+
         public int HeroHealth
         {
             get => heroHealth;
