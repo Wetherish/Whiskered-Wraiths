@@ -1,16 +1,21 @@
-using UnityEngine;
-
-public class EnemyMain : MonoBehaviour
+namespace Enemy
 {
-    [SerializeField] private Health health;
+    using UnityEngine;
+    using PlayerStuff;
 
-    [SerializeField] private HeroStats heroStats;
-    [SerializeField] private HealthManager heroHp;
-    private void OnCollisionStay2D(Collision2D collision)
+    public class EnemyMain : MonoBehaviour
     {
-        if (collision.gameObject.CompareTag("Player"))
+        private HealthManager _healthManager;
+
+        private void Start()
         {
-            heroHp.TakeDamage(1);
+            var playerObject = GameObject.FindWithTag("Player");
+            _healthManager = playerObject.GetComponent<HealthManager>();
+        }
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Player")) _healthManager.TakeDamage(1);
         }
     }
 }

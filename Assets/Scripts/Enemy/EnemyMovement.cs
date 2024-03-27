@@ -1,38 +1,37 @@
-using UnityEngine;
-
-public class EnemyMovement : MonoBehaviour
+namespace Enemy
 {
-    public Transform player;
-    private Rigidbody2D rb;
-    public float moveSpeed = 5f;
-    private Vector2 movement;
+    using UnityEngine;
 
-    private Transform firePoint;
-    private Camera virtualCamera;
-    private HeroStats heroStats;
-    private float lastAttackTime; 
-
-    void Start()
+    public class EnemyMovement : MonoBehaviour
     {
-      rb = this.GetComponent<Rigidbody2D>();
+        public Transform player;
+        private Rigidbody2D _rb;
+        public float moveSpeed = 5f;
+        private Vector2 _movement;
 
-    }
-    void Update()
-    {
-       Vector3 direction = player.position - transform.position;
-       float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-       direction.Normalize();
-       movement = direction;
-    }
 
-    private void FixedUpdate()
-    {
-        moveCharacter(movement);
-    }
+        private void Start()
+        {
+            _rb = GetComponent<Rigidbody2D>();
+            var playerObject = GameObject.FindWithTag("Player");
+            player = playerObject.transform;
+        }
 
-    void moveCharacter(Vector2 direction)
-    {
-        rb.MovePosition((Vector2) transform.position + (direction * moveSpeed * Time.deltaTime));
-    }
+        private void Update()
+        {
+            var direction = player.position - transform.position;
+            direction.Normalize();
+            _movement = direction;
+        }
 
+        private void FixedUpdate()
+        {
+            MoveCharacter(_movement);
+        }
+
+        private void MoveCharacter(Vector2 direction)
+        {
+            _rb.MovePosition((Vector2)transform.position + direction * (moveSpeed * Time.deltaTime));
+        }
+    }
 }
