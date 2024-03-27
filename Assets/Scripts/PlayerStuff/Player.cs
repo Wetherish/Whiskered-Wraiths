@@ -7,7 +7,7 @@ namespace PlayerStuff
     {
         AttackBase _leftClickAttack;
         AttackBase _rightClickAttack;
-
+       
         void Start()
         {
             _leftClickAttack = gameObject.AddComponent<AttackRange>();

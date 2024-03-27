@@ -12,6 +12,21 @@ namespace PlayerStuff
 
         private Dash _movementDash;
 
+        public static PlayerMovement Instance { get; private set; }
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Debug.Log("meow");
+                Destroy(gameObject);
+            }
+        }
+        
         void Start()
         {
             _movementDash = this.gameObject.AddComponent<DashSimple>();

@@ -10,6 +10,7 @@ TagManager:
   - adBuff
   - msBuff
   - ProjectileDash
+  - UITag
   layers:
   - Default
   - TransparentFX

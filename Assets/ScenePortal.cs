@@ -9,7 +9,6 @@ public class PortalTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) // Replace "Player" with your player's tag
         {
-            Debug.Log("Dupa");
             SceneManager.LoadScene(sceneToLoad);
         }
     }

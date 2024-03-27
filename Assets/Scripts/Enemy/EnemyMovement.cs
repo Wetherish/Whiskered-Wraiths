@@ -13,6 +13,8 @@ namespace Enemy
         void Start()
         {
             _rb = this.GetComponent<Rigidbody2D>();
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            player = playerObject.transform;
 
         }
 

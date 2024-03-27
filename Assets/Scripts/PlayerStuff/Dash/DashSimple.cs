@@ -3,23 +3,23 @@ using UnityEngine;
 
 public class DashSimple : Dash
 {
-    private bool isDashing = false;
-    private Rigidbody2D rb;
+    private bool _isDashing;
+    private Rigidbody2D _rb;
     private bool canDash;
     
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         canDash = true;
     }
 
     public override IEnumerator dash(Vector2 movementDirection, float dashSpeed, float dashTime, float dashCooldown)
     {
         canDash = false;
-        isDashing = true;
-        rb.velocity = new Vector2(movementDirection.x * dashSpeed, movementDirection.y * dashSpeed);
+        _isDashing = true;
+        _rb.velocity = new Vector2(movementDirection.x * dashSpeed, movementDirection.y * dashSpeed);
         yield return new WaitForSeconds(dashTime);
-        isDashing = false;
+        _isDashing = false;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
         SimpleDashDebug();
@@ -31,7 +31,7 @@ public class DashSimple : Dash
 
     public override bool IsDashing()
     {
-        return isDashing;
+        return _isDashing;
     }
 
     public override bool CanDash()

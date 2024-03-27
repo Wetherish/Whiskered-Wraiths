@@ -1,6 +1,7 @@
 namespace PlayerStuff
 {
     using UnityEngine;
+    using UnityEngine.SceneManagement;
     using System.Collections;
     using Unity.VisualScripting;
     using Stats;
@@ -8,6 +9,15 @@ namespace PlayerStuff
     public class HealthManager : MonoBehaviour
     {
         [SerializeField] HeroStats heroStats;
+        private GameObject _playerObject;
+        private GameObject _cameraTag;
+        private GameObject _ui;
+        void Start()
+        {
+            _playerObject = GameObject.FindWithTag("Player");
+            _cameraTag = GameObject.FindWithTag("Main Camera");
+            _ui = GameObject.FindWithTag("UITag");
+        }
         private bool Immune { get; set; }
 
         public void Heal(int heal)
@@ -51,6 +61,10 @@ namespace PlayerStuff
             yield return new WaitForNextFrameUnit();
             Immune = false;
             Destroy(gameObject);
+            Destroy(_playerObject);
+            Destroy(_cameraTag);
+            Destroy(_ui);
+            SceneManager.LoadScene("Died");
 
         }
     }

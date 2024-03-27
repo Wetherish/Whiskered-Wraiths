@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CrazyMoveset : MonoBehaviour
 {
@@ -15,7 +16,15 @@ public class CrazyMoveset : MonoBehaviour
     private readonly List<GameObject> _gameObjects = new List<GameObject>();
     private readonly List<float> _angles = new List<float>();
     private readonly float _spinSpeed = 1f;
-
+    private GameObject _playerObject;
+    private GameObject _cameraTag;
+    private GameObject _ui;
+    void Start()
+    {
+        _playerObject = GameObject.FindWithTag("Player");
+        _cameraTag = GameObject.FindWithTag("Main Camera");
+        _ui = GameObject.FindWithTag("UITag");
+    }
     void Update()
     {
         for (int i = 0; i < _gameObjects.Count; i++)
@@ -73,5 +82,13 @@ public class CrazyMoveset : MonoBehaviour
             _gameObjects.Add(bullet);
             _angles.Add(angle);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(_playerObject);
+        Destroy(_cameraTag);
+        Destroy(_ui);
+        SceneManager.LoadScene("Victory");
     }
 }
