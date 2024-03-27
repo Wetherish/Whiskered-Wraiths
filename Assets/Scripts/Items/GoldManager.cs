@@ -1,19 +1,22 @@
-using UnityEngine;
-using TMPro;
-
-public class GoldManager : MonoBehaviour
+namespace Items
 {
-    public TMP_Text goldText;
-    public int gold;
-    
-    void Start()
-    {
-        goldText.text = gold.ToString(); 
-    }
+    using UnityEngine;
+    using TMPro;
 
-    // Update is called once per frame
-    void Update()
+    public class GoldManager : MonoBehaviour
     {
-        goldText.text = gold.ToString();
+        public TMP_Text goldText;
+        public int gold;
+
+        private void Start()
+        {
+            goldText.text = gold.ToString();
+        }
+
+        // Update is called once per frame
+        private void Update()
+        {
+            goldText.text = gold.ToString();
+        }
     }
 }

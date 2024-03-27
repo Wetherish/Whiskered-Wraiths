@@ -1,102 +1,112 @@
-using UnityEngine;
-
-public class HeroStats : MonoBehaviour
+namespace Stats
 {
-    [Header("Health settings")]
-    [SerializeField] private int heroHealth = 10;
-    [SerializeField] private int maxNumberOfHearts = 10;
+    using UnityEngine;
 
-    [Header("Movement settings")]
-    [SerializeField] private float movementSpeed = 10f;
+    public class HeroStats : MonoBehaviour
+    {
+        [Header("Health settings")] [SerializeField]
+        private int heroHealth = 10;
 
-    [Header("Dash settings")]
-    [SerializeField] private float dashSpeed = 20f;
-    [SerializeField] private float dashTime = 0.1f;
-    [SerializeField] private float dashCooldown = 1f;
-    
-    [Header("Range attack settings")]
-    [SerializeField] private float attackCooldown;
-    [SerializeField] private float projectileSpeed;
-    [SerializeField] private int rangeAttackDamage;
-    [SerializeField] private float bulletSize;
-    
-    [Header("Melee attack settings")]
-    [SerializeField] private float attackRange;
-    [SerializeField] private float attackMeleeCooldown;
-    [SerializeField] private int meleeAttackDamage;
-    public int HeroHealth
-    {
-        get { return heroHealth; }
-        set { heroHealth = value; }
-    }
-    public int MaxNumberOfHearts
-    {
-        get { return maxNumberOfHearts; }
-        set { maxNumberOfHearts = value; }
-    }
-    public float MovementSpeed
-    {
-        get { return movementSpeed; }
-        set { movementSpeed = value; }
-    }
+        [SerializeField] private int maxNumberOfHearts = 10;
 
-    public float DashSpeed
-    {
-        get { return dashSpeed; }
-        set { dashSpeed = value; }
-    }
+        [Header("Movement settings")] [SerializeField]
+        private float movementSpeed = 10f;
 
-    public float DashTime
-    {
-        get { return dashTime; }
-        set { dashTime = value; }
-    }
+        [Header("Dash settings")] [SerializeField]
+        private float dashSpeed = 20f;
 
-    public float DashCooldown
-    {
-        get { return dashCooldown; }
-        set { dashCooldown = value; }
-    }
+        [SerializeField] private float dashTime = 0.1f;
+        [SerializeField] private float dashCooldown = 1f;
 
-    public float AttackCooldown
-    {
-        get { return attackCooldown; }
-        set { attackCooldown = value; }
-    }
-    
-    public float ProjectileSpeed
-    {
-        get { return projectileSpeed; }
-        set { projectileSpeed = value; }
-    }
+        [Header("Range attack settings")] [SerializeField]
+        private float attackCooldown;
 
-    public int RangeAttackDamage
-    {
-        get { return rangeAttackDamage; }
-        set { rangeAttackDamage = value; }
-    }
+        [SerializeField] private float projectileSpeed;
+        [SerializeField] private int rangeAttackDamage;
+        [SerializeField] private float bulletSize;
 
-    public float BulletSize
-    {
-        get { return bulletSize; }
-        set { bulletSize = value; }
-    }
-   
-    public float AttackRange
-    {
-        get { return attackRange; }
-        set { attackRange = value; }
-    }
+        [Header("Melee attack settings")] [SerializeField]
+        private float attackRange;
 
-    public int MeleeAttackDamage
-    {
-        get { return meleeAttackDamage; }
-        set { meleeAttackDamage = value; }
-    }
-    
-    public float AttackMeleeCooldown
-    {
-        get { return attackMeleeCooldown; }
-        set { attackCooldown = value; }
+        [SerializeField] private float attackMeleeCooldown;
+        [SerializeField] private int meleeAttackDamage;
+
+        public int HeroHealth
+        {
+            get => heroHealth;
+            set => heroHealth = value;
+        }
+
+        public int MaxNumberOfHearts
+        {
+            get => maxNumberOfHearts;
+            set => maxNumberOfHearts = value;
+        }
+
+        public float MovementSpeed
+        {
+            get => movementSpeed;
+            set => movementSpeed = value;
+        }
+
+        public float DashSpeed
+        {
+            get => dashSpeed;
+            set => dashSpeed = value;
+        }
+
+        public float DashTime
+        {
+            get => dashTime;
+            set => dashTime = value;
+        }
+
+        public float DashCooldown
+        {
+            get => dashCooldown;
+            set => dashCooldown = value;
+        }
+
+        public float AttackCooldown
+        {
+            get => attackCooldown;
+            set => attackCooldown = value;
+        }
+
+        public float ProjectileSpeed
+        {
+            get => projectileSpeed;
+            set => projectileSpeed = value;
+        }
+
+        public int RangeAttackDamage
+        {
+            get => rangeAttackDamage;
+            set => rangeAttackDamage = value;
+        }
+
+        public float BulletSize
+        {
+            get => bulletSize;
+            set => bulletSize = value;
+        }
+
+        public float AttackRange
+        {
+            get => attackRange;
+            set => attackRange = value;
+        }
+
+        public int MeleeAttackDamage
+        {
+            get => meleeAttackDamage;
+            set => meleeAttackDamage = value;
+        }
+
+        public float AttackMeleeCooldown
+        {
+            get => attackMeleeCooldown;
+            set => attackMeleeCooldown = value;
+        }
     }
 }
