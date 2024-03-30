@@ -21,23 +21,21 @@ namespace PlayerStuff.Attack
 
         public override void Attack()
         {
-            Vector2 mousePosition = _virtualCamera.ScreenToWorldPoint(Input.mousePosition);
+            if(IsAttacking()){
+                if(CanAttack())
+                {
+                    Fire();
+                }
+            }
 
-            var direction = mousePosition - (Vector2)_firePoint.position;
-            direction.Normalize();
-
-            var projectile = Instantiate(_projectilePrefab, _firePoint.position, _firePoint.rotation);
-
-            var projectileRigidbody = projectile.GetComponent<Rigidbody2D>();
-            projectileRigidbody.velocity = direction * _heroStats.ProjectileSpeed;
         }
 
-        public override bool IsAttacking()
+        private bool IsAttacking()
         {
             return Input.GetKey(KeyCode.Mouse0);
         }
 
-        public override bool CanAttack()
+        private bool CanAttack()
         {
             if (Time.time - _lastAttackTime >= _heroStats.AttackCooldown || _lastAttackTime == 0)
             {
@@ -46,6 +44,15 @@ namespace PlayerStuff.Attack
             }
 
             return false;
+        }
+        private void Fire()
+        {
+            Vector2 mousePosition = _virtualCamera.ScreenToWorldPoint(Input.mousePosition);
+            var direction = mousePosition - (Vector2)_firePoint.position;
+            direction.Normalize();
+            var projectile = Instantiate(_projectilePrefab, _firePoint.position, _firePoint.rotation);
+            var projectileRigidbody = projectile.GetComponent<Rigidbody2D>();
+            projectileRigidbody.velocity = direction * _heroStats.ProjectileSpeed;
         }
     }
 }

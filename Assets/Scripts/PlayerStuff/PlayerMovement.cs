@@ -22,7 +22,6 @@ namespace PlayerStuff
             }
             else
             {
-                Debug.Log("meow");
                 Destroy(gameObject);
             }
         }
@@ -66,9 +65,9 @@ namespace PlayerStuff
             return heroMovementStats.MovementSpeed;
         }
 
-        public void MakeDashProjectile()
+        public void MakeDash<T>() where T : Dash.Dash
         {
-            _movementDash = gameObject.AddComponent<Dash.DashProjectile>();
+            _movementDash = gameObject.AddComponent<T>();
         }
     }
 }

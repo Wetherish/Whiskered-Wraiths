@@ -25,14 +25,7 @@ namespace PlayerStuff.Dash
             _isDashing = false;
             yield return new WaitForSeconds(dashCooldown);
             _canDash = true;
-            SimpleDashDebug();
         }
-
-        private void SimpleDashDebug()
-        {
-            Debug.Log("Simple Dash");
-        }
-
         public override bool IsDashing()
         {
             return _isDashing;

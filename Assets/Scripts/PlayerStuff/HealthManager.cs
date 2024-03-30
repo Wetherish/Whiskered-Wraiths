@@ -25,8 +25,6 @@ namespace PlayerStuff
         public void Heal(int heal)
         {
             if (heroStats.HeroHealth == heroStats.MaxNumberOfHearts * 2) return;
-
-            Debug.Log("Heal");
             heroStats.HeroHealth += heal;
         }
 

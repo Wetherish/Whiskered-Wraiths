@@ -16,13 +16,8 @@ namespace PlayerStuff
 
         private void Update()
         {
-            if (_leftClickAttack.IsAttacking())
-                if (_leftClickAttack.CanAttack())
-                    _leftClickAttack.Attack();
-
-            if (_rightClickAttack.IsAttacking())
-                if (_rightClickAttack.CanAttack())
-                    _rightClickAttack.Attack();
+            _leftClickAttack.Attack();
+            _rightClickAttack.Attack();
         }
     }
 }

@@ -12,20 +12,25 @@ namespace PlayerStuff.Attack
         private void Awake()
         {
             heroStats = gameObject.GetComponent<HeroStats>();
-            Debug.Log("HeroStats: " + heroStats.AttackCooldown);
         }
 
         public override void Attack()
         {
-            // throw new System.NotImplementedException();
+            if(IsAttacking()){
+                if(CanAttack())
+                {
+                    Debug.Log("Attacking");
+                    // Fire();
+                }
+            }
         }
 
-        public override bool IsAttacking()
+        private bool IsAttacking()
         {
             return Input.GetKey(KeyCode.Mouse1);
         }
 
-        public override bool CanAttack()
+        private bool CanAttack()
         {
             if (Time.time - _lastAttackTime >= heroStats.AttackCooldown || _lastAttackTime == 0) return true;
 
