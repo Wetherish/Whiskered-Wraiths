@@ -6,35 +6,88 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public Transform player;
-    private Rigidbody2D rb;
+     public Transform player;
+    public float chaseRange = 10f;
+    public float attackRange = 2f;
     public float moveSpeed = 5f;
-    private Vector2 movement;
+    public float stoppingDistance = 1f;
 
-    
+    private Rigidbody2D rb;
+    private bool isChasing = false;
+    private float distanceToPlayer;
+    [SerializeField] private int health;
+    [SerializeField] private HealthManager heroHp;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject projectilePrefab;
+    public float ProjectileSpeed = 2f;
+    public GameObject bullet;
+    public Transform bulletPos;
     void Start()
     {
-      rb = this.GetComponent<Rigidbody2D>();
-
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-       Vector3 direction = player.position - transform.position;
-       float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-       direction.Normalize();
-       movement = direction;
+        distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        if (distanceToPlayer <= chaseRange)
+        {
+            isChasing = true;
+        }
+        else
+        {
+            isChasing = false;
+        }
+
+        if (isChasing)
+        {
+            ChasePlayer(distanceToPlayer);
+        }
     }
 
-    private void FixedUpdate()
+    public void TakeDamage(int damage)
     {
-        moveCharacter(movement);
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
-
-    void moveCharacter(Vector2 direction)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        rb.MovePosition((Vector2) transform.position + (direction * moveSpeed * Time.deltaTime));
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            heroHp.TakeDamage(1);
+        }
     }
 
+    public void RangeAttackEnemy()
+    {
+        Instantiate(bullet, bulletPos.position, Quaternion.identity);
+    }
+
+    void ChasePlayer(float distanceToPlayer)
+    {
+        Vector2 direction = (player.position - transform.position).normalized;
+
+        if(gameObject.tag == "RangeEnemy")
+        {
+            if (distanceToPlayer > stoppingDistance)
+            {
+                rb.velocity = direction * moveSpeed;
+            }
+            else
+            {
+                RangeAttackEnemy();
+            }
+        }
+        else
+        {
+            if (distanceToPlayer > stoppingDistance)
+            {
+                rb.velocity = direction * moveSpeed;
+            }
+        }
+    }
 }

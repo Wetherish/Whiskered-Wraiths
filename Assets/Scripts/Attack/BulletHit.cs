@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletHit : MonoBehaviour
 {
     [SerializeField] HeroStats heroRangeDamageStats;
-    [SerializeField] public LayerMask enemyLayer;   
+    [SerializeField] public LayerMask enemyLayer;
     void Start()
     {
         
@@ -17,13 +17,12 @@ public class BulletHit : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, heroRangeDamageStats.BulletSize, enemyLayer);
         foreach (Collider2D collider in hitColliders)
         {
-            EnemyDeath enemy = collider.GetComponent<EnemyDeath>();
+            EnemyMovement enemy = collider.GetComponent<EnemyMovement>();
             if (enemy != null)
             {
                 enemy.TakeDamage(heroRangeDamageStats.RangeAttackDamage);
                 Destroy(gameObject);
             }
-
         }
     }
 }

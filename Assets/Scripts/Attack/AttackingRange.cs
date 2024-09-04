@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class RangedAttack : MonoBehaviour
 {
-    [SerializeField] private GameObject projectilePrefab; // Prefab of the projectile to spawn  
-    [SerializeField] private Transform firePoint; // Transform where the projectile spawns
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform firePoint;
     [SerializeField] private Camera virtualCamera;
     [SerializeField] private HeroStats heroStats;
-    private float lastAttackTime; // Time of the last attack
+    private float lastAttackTime;
 
     void Update()
     {

@@ -172,9 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7ab03130f18b885886d0176c282709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 1685776715}
-  heroStats: {fileID: 1685776719}
-  heroHp: {fileID: 1685776720}
 --- !u!114 &38401612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +185,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1685776712}
+  chaseRange: 10
+  attackRange: 2
   moveSpeed: 5
+  stoppingDistance: 1
+  health: 0
+  heroHp: {fileID: 0}
+  firePoint: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  ProjectileSpeed: 2
 --- !u!114 &38401613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db727c855e725654282cdbd05c7e9544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
 --- !u!70 &38401614
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -792,9 +796,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7ab03130f18b885886d0176c282709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 1685776715}
-  heroStats: {fileID: 1685776719}
-  heroHp: {fileID: 1685776720}
 --- !u!114 &317912054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,7 +809,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1685776712}
+  chaseRange: 10
+  attackRange: 2
   moveSpeed: 5
+  stoppingDistance: 1
+  health: 0
+  heroHp: {fileID: 0}
+  firePoint: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  ProjectileSpeed: 2
 --- !u!114 &317912055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,7 +830,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db727c855e725654282cdbd05c7e9544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
 --- !u!70 &317912056
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1517,26 +1525,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &642361774 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8230174214691400135, guid: 985df7715de9e1b1899003a98b7a005b, type: 3}
-  m_PrefabInstance: {fileID: 7986741786036656320}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &642361788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 642361774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c7ab03130f18b885886d0176c282709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 1685776715}
-  heroStats: {fileID: 1685776719}
-  heroHp: {fileID: 1685776720}
 --- !u!1 &655681997
 GameObject:
   m_ObjectHideFlags: 0
@@ -3108,9 +3096,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7ab03130f18b885886d0176c282709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 1685776715}
-  heroStats: {fileID: 1685776719}
-  heroHp: {fileID: 1685776720}
 --- !u!114 &1637188664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3124,7 +3109,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1685776712}
+  chaseRange: 10
+  attackRange: 2
   moveSpeed: 5
+  stoppingDistance: 1
+  health: 0
+  heroHp: {fileID: 0}
+  firePoint: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  ProjectileSpeed: 2
 --- !u!114 &1637188665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3137,7 +3130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db727c855e725654282cdbd05c7e9544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
 --- !u!70 &1637188666
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4634,9 +4626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7ab03130f18b885886d0176c282709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 1685776715}
-  heroStats: {fileID: 1685776719}
-  heroHp: {fileID: 1685776720}
 --- !u!114 &2125065706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4650,7 +4639,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1685776712}
+  chaseRange: 10
+  attackRange: 2
   moveSpeed: 5
+  stoppingDistance: 1
+  health: 0
+  heroHp: {fileID: 0}
+  firePoint: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  ProjectileSpeed: 2
 --- !u!114 &2125065707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4663,7 +4660,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db727c855e725654282cdbd05c7e9544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
 --- !u!70 &2125065708
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4970,6 +4966,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1685776712}
+    - target: {fileID: 641960354181297326, guid: 985df7715de9e1b1899003a98b7a005b, type: 3}
+      propertyPath: chaseRange
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 641960354181297326, guid: 985df7715de9e1b1899003a98b7a005b, type: 3}
+      propertyPath: stoppingDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 810386067519272037, guid: 985df7715de9e1b1899003a98b7a005b, type: 3}
       propertyPath: m_Size.x
       value: 2.45
@@ -5062,7 +5066,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8230174214691400135, guid: 985df7715de9e1b1899003a98b7a005b, type: 3}
+      propertyPath: m_TagString
+      value: RangeEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1075623608005076099, guid: 985df7715de9e1b1899003a98b7a005b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6454034619951949920, guid: 985df7715de9e1b1899003a98b7a005b, type: 3}
@@ -5077,10 +5086,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6454034619951949920, guid: 985df7715de9e1b1899003a98b7a005b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2125065704}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8230174214691400135, guid: 985df7715de9e1b1899003a98b7a005b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 642361788}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 985df7715de9e1b1899003a98b7a005b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

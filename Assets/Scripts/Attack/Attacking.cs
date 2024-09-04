@@ -9,7 +9,6 @@ public class Attacking : MonoBehaviour
     {
         
     }
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
@@ -18,7 +17,6 @@ public class Attacking : MonoBehaviour
             {
                 CheckHit();
                 lastAttackTime = Time.time;
-                Debug.Log("dmg");
             }
         }
     }
@@ -30,12 +28,11 @@ public class Attacking : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, heroStats.AttackRange, enemyLayer);
         foreach (Collider2D collider in hitColliders)
         {
-            EnemyDeath enemy = collider.GetComponent<EnemyDeath>();
+            EnemyMovement enemy = collider.GetComponent<EnemyMovement>();
             if (enemy != null)
             {
                 enemy.TakeDamage(heroStats.MeleeAttackDamage);
             }
-
         }
     }
 }

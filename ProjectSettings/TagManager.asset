@@ -9,6 +9,7 @@ TagManager:
   - heal
   - adBuff
   - msBuff
+  - RangeEnemy
   layers:
   - Default
   - TransparentFX
